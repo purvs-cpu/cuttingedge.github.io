@@ -53,3 +53,8 @@ footer {
   padding: 20px;
   color: #777;
 }
+h2 i {
+  margin-right: 10px;
+  color: #fff3d6; /* cream */
+  opacity: 0.9;
+}
