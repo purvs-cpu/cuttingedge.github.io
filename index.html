@@ -23,13 +23,16 @@
     </p>
   </section>
 
-  <section>
-    <h2><i class="fa-solid fa-calendar-days"></i> Upcoming Events</h2>
-    <ul>
-      <li>Recruitments – jan 14</li>
-      <li>Hands-on Workshop – Feb 5</li>
-    </ul>
-  </section>
+ <section>
+  <h2><i class="fa-solid fa-calendar-days"></i> Upcoming Events</h2>
+  <p><strong>Orientation Meet</strong></p>
+  <p id="countdown"></p>
+  <ul>
+    <li>Orientation Meet – Jan 14</li>
+    <li>Hands-on Workshop – Feb 5</li>
+  </ul>
+</section>
+
 
   <section>
 <h2><i class="fa-solid fa-envelope"></i> Contact</h2>
@@ -42,6 +45,29 @@
 <footer>
   © 2026 Cutting Edge Club
 </footer>
+<script>
+  // Set event date (YEAR, MONTH-1, DAY, HOUR, MINUTE)
+  const eventDate = new Date(2026, 0, 14, 5, 0, 0).getTime();
+
+  const countdownFunction = setInterval(() => {
+    const now = new Date().getTime();
+    const distance = eventDate - now;
+
+    if (distance < 0) {
+      document.getElementById("countdown").innerHTML = "🎉 Event is live!";
+      clearInterval(countdownFunction);
+      return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+      `⏳ ${days}d ${hours}h ${minutes}m ${seconds}s remaining`;
+  }, 1000);
+</script>
 
 </body>
 </html>
